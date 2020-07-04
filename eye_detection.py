@@ -44,6 +44,19 @@ def circle_detection(image):
     return circle_hist
 
 
-if circle_detection(image_1) == circle_detection(image_2):
-    print(True)
+def compare_histogram_length(hist1, hist2):
+    return len(hist1) == len(hist2)
+
+def compare_histogram_values(hist1, hist2):
+    hist_equal = True
+    for gray_value in range(len(hist1)):
+        if hist1[gray_value] != hist2[gray_value]:
+            hist_equal = False
+    return hist_equal
+
+hist1 = circle_detection(image_1)
+hist2 = circle_detection(image_2)
+
+print(compare_histogram_length(hist1, hist2))
+print(compare_histogram_values(hist1, hist2))
 
